@@ -1,23 +1,28 @@
 from Classtriangulos import Triangulo
 
 
-triangulo = Triangulo()
+tr = Triangulo()
+
 cond = False
 while cond == False:
-    ladoA = int(input('Informe o valor do lado A: '))
-    ladoB = int(input('Informe o valor do lado B: '))
-    ladoC = int(input('Informe o valor do lado C: '))
-    cond1 = triangulo.recebe_valor(ladoA, ladoB, ladoC)
-    cond2 = triangulo.calcula_perimetro()
-    if cond1 == False or cond2 == False:
-        print('\nValores não compoem a existencia de um triangulo! Repita a operação!\n')
-        cond = False
-    else:
+    tr.ladoA = int(input('Informe o tamanho do lado A: '))
+    tr.ladoB = int(input('Informe o tamanho do lado B: '))
+    tr.ladoC = int(input('Informe o tamanho do lado C: '))    
+    if (abs(tr.ladoA - tr.ladoB) < tr.ladoC) == True and (tr.ladoC < (tr.ladoA + tr.ladoB)) == True:
+        area = tr.calc_perimetro()
         cond = True
+    elif (abs(tr.ladoB - tr.ladoC) < tr.ladoA) == True and (tr.ladoA < (tr.ladoB + tr.ladoC)) == True:
+        area = tr.calc_perimetro()
+        cond = True
+    elif (abs(tr.ladoC - tr.ladoA) < tr.ladoB) == True and (tr.ladoB < (tr.ladoC + tr.ladoA)) == True:
+        area = tr.calc_perimetro()
+        cond = True
+    else:
+        print('Os valores digitados não compoem um triangulo!\n Refaça a operação...')
+        cond = False
 
-triangulo.retorna_perimetro()
-        
-triangulo.calcula_maior()
 
-triangulo.retorna_maior()
+maior = tr.calc_maior()
+
+print('A área do triangulo é de ',area,'. E o ',maior,' é o maior lado do triagulo')
 
